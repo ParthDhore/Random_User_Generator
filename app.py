@@ -6,7 +6,7 @@ from decouple import config
 
 app=Flask(__name__)
 
-password=config('mongo_password')
+password="aXEOI75eMSchXUNj"
 db_name='userinfo'
 app.config['MONGODB_SETTINGS']={
     "host":"mongodb+srv://admin:{}@userinfo.wtnrcuz.mongodb.net/{}?retryWrites=true&w=majority".format(password,db_name)
