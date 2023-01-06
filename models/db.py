@@ -2,7 +2,7 @@ from flask_mongoengine import MongoEngine
 from decouple import config
 
 database_name="userinfo"
-password=config("mongo_password")
+password="aXEOI75eMSchXUNj"
 DB_URI="mongodb+srv://admin:{}@userinfo.wtnrcuz.mongodb.net/{}?retryWrites=true&w=majority".format(password,database_name)
 
 db=MongoEngine()
