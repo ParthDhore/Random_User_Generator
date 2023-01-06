@@ -14,8 +14,8 @@ class Random_user(Resource):
     def get(self):
         def extract_features(images):
             features=[]
-            for image in images:
-                img=image.load_img(image,grayscale=True)
+            for im in images:
+                img=image.load_img(im,grayscale=True)
                 img=img.resize((128,128),Image.ANTIALIAS)
                 img=np.array(img)
                 features.append(img)
