@@ -1,6 +1,6 @@
 from flask import Flask, Response, request,jsonify, make_response
 import tensorflow as tf
-from tensorflow.keras.utils import load_img
+from keras.preprocessing import image
 import numpy as np
 from PIL import Image
 from io import BytesIO
@@ -15,7 +15,7 @@ class Random_user(Resource):
         def extract_features(images):
             features=[]
             for image in images:
-                img=load_img(image,grayscale=True)
+                img=image.load_img(image,grayscale=True)
                 img=img.resize((128,128),Image.ANTIALIAS)
                 img=np.array(img)
                 features.append(img)
@@ -38,7 +38,7 @@ class Random_user(Resource):
         img=Image.open(test_path)
         img.save('test.png','PNG')
         test_X=extract_features(['test.png'])
-        mp=tf.keras.models.load_model('.\cnn')
+        mp=tf.keras.models.load_model('./cnn')
         res=mp.predict(test_X.reshape(1,128,128,1))
         gender_dict={0:'Female',1:'Male'}
         pred_gender=gender_dict[round(res[0][0])]
